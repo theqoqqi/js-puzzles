@@ -1,0 +1,50 @@
+
+.resizer {
+    --padding: 5px;
+    --line-color: rgba(0, 0, 0, 1);
+    --line-color-active: rgba(0, 0, 0, 1);
+    --border-color: rgba(255, 255, 255, 0);
+    --border-color-active: rgba(0, 0, 0, 0.5);
+
+    --padding-neg: calc(var(--padding) * -1);
+    --size: calc(1px + var(--padding) * 2);
+
+    background: var(--line-color);
+    background-clip: padding-box;
+    box-sizing: border-box;
+
+    z-index: 1;
+}
+
+.resizer:hover {
+    border-color: var(--border-color-active);
+    background-color: var(--line-color-active);
+
+    transition: all .3s ease;
+}
+
+.resizer.disabled {
+    cursor: not-allowed;
+}
+
+.resizer.disabled:hover {
+    border-color: transparent;
+}
+
+.vertical {
+    width: var(--size);
+    min-width: var(--size);
+    margin: 0 var(--padding-neg);
+    border-left: var(--padding) solid var(--border-color);
+    border-right: var(--padding) solid var(--border-color);
+    cursor: ew-resize;
+}
+
+.horizontal {
+    height: var(--size);
+    min-height: var(--size);
+    margin: var(--padding-neg) 0;
+    border-top: var(--padding) solid var(--border-color);
+    border-bottom: var(--padding) solid var(--border-color);
+    cursor: ns-resize;
+}

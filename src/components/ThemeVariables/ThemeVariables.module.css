@@ -1,0 +1,22 @@
+
+.themeVariables {
+    --theme-font: Arial, serif;
+    --theme-bg: #15222e;
+    --theme-fg: #b5cad2;
+    --theme-fg-muted: #6c757d;
+    --theme-fg-variable: #d4d48b;
+
+    --theme-border: #213040;
+    --theme-border-active: #394a66;
+    --theme-border-rgb: 33, 48, 64;
+
+    --theme-control-bg: transparent;
+    --theme-control-bg-hover: rgba(0, 0, 0, 0.25);
+    --theme-control-bg-active: rgba(0, 0, 0, 0.5);
+    --theme-control-fg: #b5cad2;
+    --theme-control-fg-hover: white;
+    --theme-control-fg-active: white;
+    --theme-control-border: transparent;
+    --theme-control-border-hover: transparent;
+    --theme-control-border-active: transparent;
+}

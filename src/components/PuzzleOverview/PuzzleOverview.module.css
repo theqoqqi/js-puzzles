@@ -1,0 +1,20 @@
+
+.puzzleOverview {
+    flex: 1;
+}
+
+.variable {
+
+}
+
+.variableName {
+    color: var(--theme-fg-variable);
+}
+
+.variableTitle {
+
+}
+
+.variableDescription {
+
+}

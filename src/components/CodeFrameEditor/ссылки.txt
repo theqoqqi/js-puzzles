@@ -1,0 +1,4 @@
+https://github.com/securingsincity/react-ace/blob/master/docs/Ace.md
+https://github.com/thlorenz/brace/tree/master/theme
+https://github.com/ajaxorg/ace/wiki/Configuring-Ace
+https://www.npmjs.com/package/prism-themes

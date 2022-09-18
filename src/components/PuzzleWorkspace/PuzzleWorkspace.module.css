@@ -1,0 +1,13 @@
+.appFrameContainer {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.appFrameContainer > * {
+    flex: 1;
+}
+
+.noPointerEvents iframe {
+    pointer-events: none;
+}

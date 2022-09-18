@@ -1,0 +1,12 @@
+
+.codeFrameEditor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    line-height: 1.1875;
+    border-top: 1px solid var(--theme-border);
+    border-bottom: 1px solid var(--theme-border);
+
+    overflow-x: auto;
+}

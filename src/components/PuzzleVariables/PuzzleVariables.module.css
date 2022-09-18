@@ -1,0 +1,30 @@
+
+.puzzleVariables {
+    flex: 1;
+}
+
+.variableList {
+
+}
+
+.variable {
+
+}
+
+.variableTitle {
+    padding: 4px 12px !important;
+
+    color: var(--theme-fg-muted);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.variableName {
+    color: var(--theme-fg);
+}
+
+.variableDescription {
+
+}

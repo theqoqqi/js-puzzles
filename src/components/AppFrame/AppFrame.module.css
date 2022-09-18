@@ -1,0 +1,20 @@
+
+.appFrame {
+    flex: 1;
+}
+
+.iframeWrapper {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.iframe {
+    width: 100%;
+
+    border: none;
+}
+
+.runButton {
+    padding: 0 8px !important;
+}

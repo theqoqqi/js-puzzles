@@ -1,0 +1,14 @@
+.btn-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--theme-fg);
+    --bs-btn-bg: var(--theme-control-bg);
+    --bs-btn-border-color: var(--theme-control-border);
+    --bs-btn-border-radius: .5rem;
+    --bs-btn-hover-color: var(--theme-control-fg-hover);
+    --bs-btn-hover-bg: var(--theme-control-bg-hover);
+    --bs-btn-hover-border-color: var(--theme-control-border-hover);
+    --bs-btn-focus-shadow-rgb: transparent;
+    --bs-btn-active-color: var(--theme-control-fg-active);
+    --bs-btn-active-bg: var(--theme-control-bg-active);
+    --bs-btn-active-border-color: var(--theme-control-border-active);
+}
