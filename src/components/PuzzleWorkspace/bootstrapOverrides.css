@@ -70,3 +70,7 @@
     --bs-list-group-active-bg: var(--theme-control-bg-active);
     --bs-list-group-active-border-color: transparent;
 }
+
+.list-group-item {
+    outline: 0;
+}
