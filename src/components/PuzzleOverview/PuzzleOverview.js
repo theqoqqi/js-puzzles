@@ -50,7 +50,7 @@ function PuzzleOverview({puzzle}) {
                 </Card.Text>
                 <hr />
                 <Card.Subtitle>
-                    Список доступных глобальных переменных:
+                    Список доступных переменных и функций:
                 </Card.Subtitle>
                 {puzzle?.variables?.map(variable =>
                     <Variable key={variable} variable={variable} />
