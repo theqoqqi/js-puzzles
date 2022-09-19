@@ -15,7 +15,7 @@ export default class CodeFrame {
     constructor(json) {
         this.title = json.title;
         this.description = json.description;
-        this.visibleLines = FileRange.fromString(json.visibleLines);
+        this.visibleLines = FileRange.fromString(json.visibleLines ?? '0-0');
         this.editableLines = FileRange.fromString(json.editableLines ?? '0-0');
         this.contents = json.contents;
     }

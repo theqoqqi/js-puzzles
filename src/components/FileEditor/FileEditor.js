@@ -33,6 +33,9 @@ function FileEditor({fileProps, onChange, onClose}) {
     }, [codeFrames]);
 
     let language = getLanguageFromExtension(fileProps.file);
+    let visibleCodeFrames = Array.from(codeFrames.keys())
+        .filter(index => !codeFrames[index].visibleLines.isEmpty)
+        .map(index => [index, codeFrames[index]]);
 
     return (
         <Card className={styles.fileEditor}>
@@ -53,7 +56,7 @@ function FileEditor({fileProps, onChange, onClose}) {
                         <RawHtml html={fileProps.description} />
                     </Card.Text>
                 )}
-                {codeFrames.map((codeFrame, index) =>
+                {visibleCodeFrames.map(([index, codeFrame]) =>
                     <React.Fragment key={`${fileProps.file}-${index}`}>
                         {codeFrame?.title && (
                             <Card.Subtitle>{codeFrame.title}</Card.Subtitle>
