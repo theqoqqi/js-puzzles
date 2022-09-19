@@ -26,6 +26,7 @@ function PuzzleWorkspace({ puzzle, files, onChange, onSave, onReset }) {
     let [openedFileIndex, setOpenedFileIndex] = useState();
     let [isResizingPanes, setResizingPanes] = useState(false);
     let [logs, setLogs] = useState([]);
+    let [preferredSize, setPreferredSize] = useState({});
     let iframeRef = useRef();
     let debouncedSaveAllCodeFrames = useDebouncedCallback(saveAllCodeFrames, 1000);
 
@@ -43,6 +44,18 @@ function PuzzleWorkspace({ puzzle, files, onChange, onSave, onReset }) {
     let openedFile = files[openedFileIndex];
 
     useEffect(() => {
+        let unbindIframeMessageListener = bindIframeMessageListener();
+
+        return () => {
+            unbindIframeMessageListener();
+        };
+    }, []);
+
+    useEffect(() => {
+        setPreferredSize(getPreferredSize(puzzle));
+    }, [puzzle]);
+
+    function bindIframeMessageListener() {
         let listener = e => {
             if (e.data?.type !== 'console-log') {
                 return;
@@ -58,7 +71,7 @@ function PuzzleWorkspace({ puzzle, files, onChange, onSave, onReset }) {
         return () => {
             window.removeEventListener('message', listener);
         };
-    }, []);
+    }
 
     function onOpenFile(fileIndex) {
         setOpenedFileIndex(fileIndex);
@@ -139,9 +152,9 @@ function PuzzleWorkspace({ puzzle, files, onChange, onSave, onReset }) {
                     <PuzzleOverview puzzle={puzzle} />
                 }
             </Pane>
-            <Pane minSize={400}>
+            <Pane minSize={preferredSize?.width ?? 400}>
                 <SplitPane split='horizontal' resizerStyle={resizerStyle} {...resizeCallbacks}>
-                    <Pane minSize={200} className={classNames({
+                    <Pane minSize={preferredSize?.height ?? 200} className={classNames({
                         [styles.appFrameContainer]: true,
                         [styles.noPointerEvents]: isResizingPanes,
                     })}>
@@ -160,6 +173,24 @@ function PuzzleWorkspace({ puzzle, files, onChange, onSave, onReset }) {
             </Pane>
         </SplitPane>
     );
+}
+
+function getPreferredSize(puzzle) {
+    let size = {
+        width: 0,
+        height: 0,
+    };
+    let appFrameHeaderHeight = 32;
+
+    if (puzzle?.preferredIframeWidth) {
+        size.width = puzzle.preferredIframeWidth;
+    }
+
+    if (puzzle?.preferredIframeHeight) {
+        size.height = appFrameHeaderHeight + puzzle.preferredIframeHeight;
+    }
+
+    return size;
 }
 
 export default PuzzleWorkspace;
