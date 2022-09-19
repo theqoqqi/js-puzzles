@@ -38,30 +38,6 @@ function Puzzles({puzzles}) {
                         />
                     </div>
                 )}
-                {Array.from(Object.entries(puzzlesByAppNames)).map(([appName, puzzles]) =>
-                    <div key={appName} className={styles.appPuzzles}>
-                        <Card.Subtitle className={styles.appTitle}>
-                            Приложение: {appName}
-                        </Card.Subtitle>
-                        <PuzzleList
-                            className={styles.puzzleListContainer}
-                            puzzles={puzzles}
-                            onClickPuzzle={onPuzzleClicked}
-                        />
-                    </div>
-                )}
-                {Array.from(Object.entries(puzzlesByAppNames)).map(([appName, puzzles]) =>
-                    <div key={appName} className={styles.appPuzzles}>
-                        <Card.Subtitle className={styles.appTitle}>
-                            Приложение: {appName}
-                        </Card.Subtitle>
-                        <PuzzleList
-                            className={styles.puzzleListContainer}
-                            puzzles={puzzles}
-                            onClickPuzzle={onPuzzleClicked}
-                        />
-                    </div>
-                )}
             </Card.Body>
         </Card>
     );
