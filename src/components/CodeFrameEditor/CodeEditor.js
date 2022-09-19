@@ -19,6 +19,7 @@ function CodeEditor({ language, contents, onChange, onChangeCursorCoords, ...pro
     const [name] = useState(nextName());
     const ref = useRef();
 
+    let rightPadding = 32;
     let characterWidth = 8.8;
     let longestLineLength = contents
         .split('\n')
@@ -32,7 +33,7 @@ function CodeEditor({ language, contents, onChange, onChangeCursorCoords, ...pro
             let y = cursorElement.offsetTop;
 
             onChangeCursorCoords(x, y); // ace_cursor
-        }, 50);
+        }, 25);
     }
 
     return (
@@ -62,7 +63,7 @@ function CodeEditor({ language, contents, onChange, onChangeCursorCoords, ...pro
             fontSize='inherit'
             maxLines={Infinity} // Это необходимо, чтобы высота поля ввода всегда соответствовала количеству строк
 
-            width={(longestLineLength * characterWidth) +'px'}
+            width={(longestLineLength * characterWidth + rightPadding) +'px'}
             style={{
                 minWidth: '100%',
                 lineHeight: 'inherit',
