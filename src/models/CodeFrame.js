@@ -18,6 +18,8 @@ export default class CodeFrame {
         this.visibleLines = FileRange.fromString(json.visibleLines ?? '0-0');
         this.editableLines = FileRange.fromString(json.editableLines ?? '0-0');
         this.contents = json.contents;
+        this.editedContents = json.editedContents;
+        this.replacement = json.replacement;
     }
 
     static fromJson(json) {
