@@ -1,16 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import {useParams} from 'react-router';
 import FileProps from '../../models/FileProps';
 import PuzzleWorkspace from '../../components/PuzzleWorkspace/PuzzleWorkspace';
+import {setupPuzzle} from '../../api/setupPuzzle';
+import {loadPuzzle} from '../../api/loadPuzzle';
+import {saveCodeFrames} from '../../api/saveCodeFrames';
 
-let apiUrl = 'http://127.0.0.1:8000/api';
-
-PuzzlePage.propTypes = {
-
-};
-
-function PuzzlePage(props) {
+function PuzzlePage({}) {
     let { puzzleId } = useParams();
 
     let [puzzle, setPuzzle] = useState();
@@ -42,41 +38,6 @@ function PuzzlePage(props) {
             onReset={onReset}
         />
     );
-}
-
-async function setupPuzzle(puzzleId) {
-    return axios
-        .post(`${apiUrl}/workspace/setup`, {
-            puzzle: puzzleId,
-        })
-        .then(response => {
-            return response.data.puzzle;
-        });
-}
-
-async function loadPuzzle(puzzleId) {
-    return axios
-        .post(`${apiUrl}/workspace/load`, {
-            puzzle: puzzleId,
-        })
-        .then(response => {
-            return response.data.puzzle;
-        });
-}
-
-async function saveCodeFrame(file, codeFrameIndex, contents) {
-    return axios
-        .post(`${apiUrl}/workspace/${file}`, {
-            codeFrameIndex,
-            contents,
-        });
-}
-
-async function saveCodeFrames(codeFrames) {
-    return axios
-        .post(`${apiUrl}/workspace`, {
-            codeFrames,
-        });
 }
 
 export default PuzzlePage;
