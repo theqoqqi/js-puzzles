@@ -1,0 +1,28 @@
+
+.puzzles {
+    border: 1px solid var(--theme-border);
+    border-radius: 16px;
+
+    padding-top: 2px;
+    overflow: hidden;
+}
+
+.appPuzzles {
+    min-width: 500px;
+    padding: 8px;
+    border-top: 1px solid var(--theme-border);
+}
+
+.appTitle {
+    color: var(--theme-fg-muted);
+}
+
+.appTitle:hover {
+    background-color: var(--theme-control-bg-hover);
+
+    cursor: default;
+}
+
+.puzzleListContainer {
+
+}

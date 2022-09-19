@@ -1,8 +1,9 @@
 import styles from './PuzzleOverview.module.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card} from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 import RawHtml from '../RawHtml/RawHtml';
+import {useNavigate} from 'react-router';
 
 function Variable({variable}) {
     return (
@@ -30,10 +31,15 @@ PuzzleOverview.propTypes = {
 };
 
 function PuzzleOverview({puzzle}) {
+    let navigate = useNavigate();
+
     return (
         <Card className={styles.puzzleOverview}>
             <Card.Header>
                 <Card.Title>Обзор</Card.Title>
+                <Button onClick={() => navigate('/puzzles')}>
+                    К списку пазлов
+                </Button>
             </Card.Header>
             <Card.Body>
                 <Card.Subtitle>
