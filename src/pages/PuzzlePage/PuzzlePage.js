@@ -17,14 +17,20 @@ function PuzzlePage(props) {
     let [files, setFiles] = useState([]);
 
     useEffect(() => {
-        setupPuzzle(puzzleId).then(puzzle => {
-            setPuzzle(puzzle);
-            setFiles(puzzle.files.map(FileProps.fromJson));
-        });
+        loadPuzzle(puzzleId).then(onPuzzleLoaded);
     }, []);
 
     function onSave(codeFrames) {
         return saveCodeFrames(codeFrames);
+    }
+
+    function onReset() {
+        setupPuzzle(puzzleId).then(onPuzzleLoaded);
+    }
+
+    function onPuzzleLoaded(puzzle) {
+        setPuzzle(puzzle);
+        setFiles(puzzle.files.map(FileProps.fromJson));
     }
 
     return (
@@ -33,6 +39,7 @@ function PuzzlePage(props) {
             files={files}
             onChange={files => setFiles(files)}
             onSave={codeFrames => onSave(codeFrames)}
+            onReset={onReset}
         />
     );
 }
@@ -40,6 +47,16 @@ function PuzzlePage(props) {
 async function setupPuzzle(puzzleId) {
     return axios
         .post(`${apiUrl}/workspace/setup`, {
+            puzzle: puzzleId,
+        })
+        .then(response => {
+            return response.data.puzzle;
+        });
+}
+
+async function loadPuzzle(puzzleId) {
+    return axios
+        .post(`${apiUrl}/workspace/load`, {
             puzzle: puzzleId,
         })
         .then(response => {

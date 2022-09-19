@@ -1,18 +1,17 @@
 import styles from './PuzzleWorkspace.module.css';
 import './bootstrapOverrides.css';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import AppFrame from '../AppFrame/AppFrame';
 import FileEditor from '../FileEditor/FileEditor';
 import SplitPane, {Pane} from '../SplitPane';
 import PuzzleFiles from '../PuzzleFiles/PuzzleFiles';
 import ConsoleFrame from '../ConsoleFrame/ConsoleFrame';
-import {Decode, Hook, Unhook} from 'console-feed';
+import {Decode} from 'console-feed';
 import PuzzleOverview from '../PuzzleOverview/PuzzleOverview';
 import {useDebouncedCallback} from 'use-debounce';
 import classNames from 'classnames';
 import PuzzleVariables from '../PuzzleVariables/PuzzleVariables';
-import Scrollbar from 'react-scrollbars-custom';
 
 let apiUrl = 'http://127.0.0.1:8000/api';
 
@@ -22,7 +21,7 @@ PuzzleWorkspace.propTypes = {
     onSave: PropTypes.func,
 };
 
-function PuzzleWorkspace({ puzzle, files, onChange, onSave }) {
+function PuzzleWorkspace({ puzzle, files, onChange, onSave, onReset }) {
     let [appVersion, setAppVersion] = useState(0);
     let [openedFileIndex, setOpenedFileIndex] = useState();
     let [isResizingPanes, setResizingPanes] = useState(false);
@@ -120,6 +119,7 @@ function PuzzleWorkspace({ puzzle, files, onChange, onSave }) {
                             files={files}
                             selectedIndex={openedFileIndex}
                             onSelect={(file, index) => onOpenFile(index)}
+                            onReset={onReset}
                         />
                     </Pane>
                     <Pane minSize={200}>

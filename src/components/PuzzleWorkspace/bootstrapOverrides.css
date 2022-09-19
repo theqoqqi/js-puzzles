@@ -45,6 +45,9 @@
 
 .card .card-text {
     padding: 0 12px;
+}
+
+.card .card-text:not(:last-child) {
     margin-bottom: 12px;
 }
 
