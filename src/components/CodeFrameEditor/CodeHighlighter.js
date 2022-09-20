@@ -10,12 +10,16 @@ function CodeHighlighter({ language, contents, ...props }) {
         overflow: 'hidden',
     };
 
+    if (contents.endsWith('\n')) {
+        contents += ' ';
+    }
+
     return (
         <SyntaxHighlighter
             language={language}
             style={prismTheme}
             customStyle={style}
-            children={contents + '\n'}
+            children={contents}
 
             {...props}
         />

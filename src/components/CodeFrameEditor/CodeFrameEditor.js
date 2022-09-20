@@ -91,8 +91,8 @@ function splitByParts(codeFrame) {
     let endLine = editableLines.end - visibleLines.start;
     let totalLines = visibleLines.end - visibleLines.start + 1;
 
-    let before = getLines(visibleContents, 0, startLine - 1);
-    let contents = codeFrame.editedContents ?? getLines(visibleContents, startLine, endLine);
+    let before = getLines(visibleContents, 0, startLine - 1) + '\n';
+    let contents = codeFrame.editedContents ?? getLines(visibleContents, startLine, endLine) + '\n';
     let after = getLines(visibleContents, endLine + 1, totalLines);
 
     return [before, contents, after];
