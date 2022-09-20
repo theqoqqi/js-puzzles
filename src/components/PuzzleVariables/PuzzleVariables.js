@@ -1,11 +1,13 @@
 import styles from './PuzzleVariables.module.css';
 import React, {useState} from 'react';
 import {Card, ListGroup} from 'react-bootstrap';
+import RawHtml from '../RawHtml/RawHtml';
+import classNames from 'classnames';
 
 function Variable({ variable, isActive, onSelect }) {
     return (
         <ListGroup.Item
-            className={styles.variable}
+            className={classNames(styles.variable, isActive && styles.active)}
             action
             active={isActive}
             onClick={onSelect}
@@ -17,10 +19,12 @@ function Variable({ variable, isActive, onSelect }) {
                 {!isActive && variable.title && ' - ' + variable.title}
             </Card.Subtitle>
             {isActive && (
-                <Card.Text className={styles.variableDescription}>
-                    <span>{variable.title}</span>
-                    <br />
-                    <small>{variable.description}</small>
+                <Card.Text as='div' className={styles.variableDescription}>
+                    <small>
+                        {variable.description
+                            ? <RawHtml html={variable.description} />
+                            : variable.title}
+                    </small>
                 </Card.Text>
             )}
         </ListGroup.Item>

@@ -21,6 +21,14 @@
     text-overflow: ellipsis;
 }
 
+.variable.active .variableTitle {
+    font-family: monospace;
+
+    white-space: initial;
+    overflow: initial;
+    text-overflow: initial;
+}
+
 .variableName {
     color: var(--theme-fg);
 }

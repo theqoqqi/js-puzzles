@@ -9,17 +9,17 @@ function Variable({variable}) {
     return (
         <div className={styles.variable}>
             <Card.Subtitle>
-                <span className={styles.variableName}>
+                <code className={styles.variableName}>
                     {variable.name}
-                </span>
+                </code>
                 {' - '}
                 <span className={styles.variableTitle}>
                     {variable.title}
                 </span>
             </Card.Subtitle>
             {variable.description && (
-                <Card.Text className={styles.variableDescription}>
-                    {variable.description}
+                <Card.Text as='div' className={styles.variableDescription}>
+                    <RawHtml html={variable.description} />
                 </Card.Text>
             )}
         </div>

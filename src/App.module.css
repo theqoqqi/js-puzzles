@@ -15,3 +15,11 @@ hr {
     color: var(--theme-border);
     opacity: 1;
 }
+
+code {
+    color: var(--theme-fg-variable);
+}
+
+var {
+    color: var(--theme-fg-variable);
+}
