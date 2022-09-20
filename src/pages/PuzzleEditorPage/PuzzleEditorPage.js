@@ -81,8 +81,13 @@ function PuzzleEditorPage({}) {
 
     function setPuzzleField(name, value) {
         let puzzleCopy = _.cloneDeep(puzzle);
+        let path = getSubPath(name);
 
-        _.set(puzzleCopy, getSubPath(name), value);
+        if (value) {
+            _.set(puzzleCopy, path, value);
+        } else {
+            _.unset(puzzleCopy, path);
+        }
 
         setPuzzle(puzzleCopy);
     }

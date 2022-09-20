@@ -55,7 +55,7 @@ function PuzzleOverview({puzzle}) {
                             Список доступных переменных и функций:
                         </Card.Subtitle>
                         {puzzle?.variables?.map(variable =>
-                            <Variable key={variable} variable={variable} />
+                            <Variable key={variable.name} variable={variable} />
                         )}
                     </>
                 }
