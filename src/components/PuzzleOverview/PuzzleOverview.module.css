@@ -3,8 +3,13 @@
     flex: 1;
 }
 
-.variable {
+.variables {
+    border-top: 1px solid var(--theme-border);
+}
 
+.variable {
+    border-top: 1px solid var(--theme-border);
+    margin-bottom: 8px;
 }
 
 .variableName {
