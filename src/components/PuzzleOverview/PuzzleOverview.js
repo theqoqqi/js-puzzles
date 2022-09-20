@@ -48,13 +48,17 @@ function PuzzleOverview({puzzle}) {
                 <Card.Text as='div'>
                     <RawHtml html={puzzle?.description} />
                 </Card.Text>
-                <hr />
-                <Card.Subtitle>
-                    Список доступных переменных и функций:
-                </Card.Subtitle>
-                {puzzle?.variables?.map(variable =>
-                    <Variable key={variable} variable={variable} />
-                )}
+                {puzzle?.variables?.length &&
+                    <>
+                        <hr />
+                        <Card.Subtitle>
+                            Список доступных переменных и функций:
+                        </Card.Subtitle>
+                        {puzzle?.variables?.map(variable =>
+                            <Variable key={variable} variable={variable} />
+                        )}
+                    </>
+                }
             </Card.Body>
         </Card>
     );

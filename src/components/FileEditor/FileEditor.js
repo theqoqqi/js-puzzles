@@ -28,7 +28,7 @@ function FileEditor({fileProps, onChange, onClose}) {
 
     useEffect(() => {
         if (fileProps) {
-            onChange(codeFrames);
+            onChange?.(codeFrames);
         }
     }, [codeFrames]);
 

@@ -12,3 +12,24 @@
     --bs-btn-active-bg: var(--theme-control-bg-active);
     --bs-btn-active-border-color: var(--theme-control-border-active);
 }
+
+.form-control {
+    background-color: var(--theme-input-bg);
+    color: var(--theme-input-fg);
+    border: 1px solid var(--theme-input-border);
+
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.form-control:hover {
+    background-color: var(--theme-input-bg-hover);
+    color: var(--theme-input-fg-hover);
+    border: 1px solid var(--theme-input-border-hover);
+}
+
+.form-control:focus {
+    background-color: var(--theme-input-bg-active);
+    color: var(--theme-input-fg-active);
+    border: 1px solid var(--theme-input-border-active);
+}

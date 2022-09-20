@@ -19,4 +19,14 @@
     --theme-control-border: transparent;
     --theme-control-border-hover: transparent;
     --theme-control-border-active: transparent;
+
+    --theme-input-bg: rgba(0, 0, 0, 0.25);
+    --theme-input-bg-hover: rgba(0, 0, 0, 0.25);
+    --theme-input-bg-active: rgba(0, 0, 0, 0.5);
+    --theme-input-fg: #b5cad2;
+    --theme-input-fg-hover: white;
+    --theme-input-fg-active: white;
+    --theme-input-border: transparent;
+    --theme-input-border-hover: transparent;
+    --theme-input-border-active: transparent;
 }

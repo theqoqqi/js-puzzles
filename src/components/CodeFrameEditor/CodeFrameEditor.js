@@ -77,7 +77,7 @@ function trimEol(string) {
 function splitByParts(codeFrame) {
     let visibleLines = codeFrame.visibleLines;
     let editableLines = codeFrame.editableLines;
-    let visibleContents = codeFrame.contents;
+    let visibleContents = codeFrame?.contents ?? '';
 
     if (visibleLines.isEmpty) {
         return ['', '', ''];

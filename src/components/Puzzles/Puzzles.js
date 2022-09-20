@@ -13,7 +13,10 @@ Puzzles.propTypes = {
 function Puzzles({puzzles}) {
     let navigate = useNavigate();
 
-    let sortedPuzzles = _.sortBy(puzzles, puzzle => puzzle.index ?? puzzle.title);
+    let sortedPuzzles = _.sortBy(puzzles, [
+        puzzle => puzzle.order,
+        puzzle => puzzle.title,
+    ]);
     let puzzlesByAppNames = _.groupBy(sortedPuzzles, puzzle => puzzle.appName);
 
     function onPuzzleClicked(puzzle) {

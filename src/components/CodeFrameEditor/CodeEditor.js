@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/webpack-resolver';
 import 'ace-builds/src-noconflict/mode-javascript';
@@ -15,18 +15,41 @@ function nextName() {
     return `ace-editor-${nextAceEditorId++}`;
 }
 
-function CodeEditor({ language, contents, onChange, onChangeCursorCoords, ...props }) {
+function CodeEditor(props) {
+    let {
+        language,
+        contents,
+        onChange,
+        onChangeCursorCoords,
+        wrapLines = false,
+        showGutter = false,
+        ...aceProps
+    } = props;
+
     const [name] = useState(nextName());
     const ref = useRef();
 
     let rightPadding = 32;
     let characterWidth = 8.8;
     let longestLineLength = contents
-        .split('\n')
+        ?.split('\n')
         .map(line => line.length)
-        .reduce((a, b) => a > b ? a : b, 0);
+        .reduce((a, b) => a > b ? a : b, 0) ?? 0;
+
+    let style = {
+        minWidth: '100%',
+        lineHeight: 'inherit',
+    };
+
+    if (wrapLines) {
+        style.maxWidth = '100%';
+    }
 
     function onCursorMoved(e) {
+        if (!onChangeCursorCoords) {
+            return;
+        }
+
         setTimeout(() => {
             let cursorElement = ref.current.refEditor.getElementsByClassName('ace_cursor')?.[0];
             let x = cursorElement.offsetLeft;
@@ -59,17 +82,16 @@ function CodeEditor({ language, contents, onChange, onChangeCursorCoords, ...pro
             enableLiveAutocompletion
 
             showPrintMargin={false}
-            showGutter={false}
+            showGutter={showGutter}
             fontSize='inherit'
             maxLines={Infinity} // Это необходимо, чтобы высота поля ввода всегда соответствовала количеству строк
 
             width={(longestLineLength * characterWidth + rightPadding) +'px'}
-            style={{
-                minWidth: '100%',
-                lineHeight: 'inherit',
-            }}
+            style={style}
 
-            {...props}
+            wrapEnabled={wrapLines}
+
+            {...aceProps}
         />
     );
 }
