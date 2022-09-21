@@ -12,8 +12,7 @@ import PuzzleOverview from '../PuzzleOverview/PuzzleOverview';
 import {useDebouncedCallback} from 'use-debounce';
 import classNames from 'classnames';
 import PuzzleVariables from '../PuzzleVariables/PuzzleVariables';
-
-let apiUrl = 'http://127.0.0.1:8000/api';
+import {apiUrl} from '../../api/apiConfig';
 
 PuzzleWorkspace.propTypes = {
     puzzle: PropTypes.object,

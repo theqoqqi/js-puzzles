@@ -36,7 +36,6 @@ import FileProps from '../../models/FileProps';
 //         visibleLines
 //         editableLines
 //         removedLines
-//         replacement
 
 function PuzzleEditorPage({}) {
     let { puzzleId } = useParams();
